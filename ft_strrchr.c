@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:08:13 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/03 17:07:24 by aattak           ###   ########.fr       */
+/*   Updated: 2023/11/03 17:49:45 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ char	*ft_strrchr(const char *s, int c)
 		return (s + i);
 	if (j == -1)
 		return (NULL);
-	return(s + j);
+	return (s + j);
 }
