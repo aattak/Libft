@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:28:23 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/22 09:21:31 by aattak           ###   ########.fr       */
+/*   Updated: 2023/11/22 12:27:57 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,51 +34,72 @@ static int	ft_count_words(char const *s, char c)
 
 static int	word_len(char const *s, char c)
 {
+	int	i;
+
+	i = 0;
+	while (s[i] != c && s[i] != '\0')
+		i++;
+	return (i);
 }
 
-static char	*malloc_nd_fill(char const *s)
+static char	*malloc_nd_fill(char const *s, char c, int *i)
 {
-	int		i;
+	//int		i;
 	int		len;
 	char	*split;
 
-	i = 0;
-	while (s[i] == c && s[i] != '\0')
-		i++;
-	len = word_len(&s[i]);
+	//i = 0;
+	while (s[*i] == c && s[*i] != '\0')
+		(*i)++;
+	len = word_len(&s[*i], c);
 	split = (char *)malloc(len + 1);
 	if (split == NULL)
 		return (NULL);
-	strlcpy(split, &s[i], len + 1);
+	ft_strlcpy(split, &s[*i], len + 1);
 	return (split);
 }
 
 static void	ft_free(char **split, int i)
 {
 	while (i > 0)
-		free(split[i]);
+		free(split[i--]);
 	free(split);
 }
-
+#include <stdio.h> /////7ydni
 char	**ft_split(char const *s, char c)
 {
+	int		i;
+	int		j;
 	int		n_words;
 	char	**split;
 
 	n_words = ft_count_words(s, c);
+	printf("%d words\n",n_words); ////7ydni
 	split = (char **)malloc((n_words + 1) * sizeof(char *));
+	printf("malloc\n");
 	if (split == NULL)
 		return (NULL);
+	printf("wa tmallocit binaja7\n"); ////7ydni
+	i = 0;
+	j = 0;
 	while (s[i] != '\0')
 	{
-		split[i] = malloc_nd_fill(&s[i]);
+		split[j] = malloc_nd_fill(s, c, &i);
 		if (split[i] == NULL)
 		{
+			printf("lmalloc 7bess f lklma %d\n", i); ///7ydni
 			ft_free(split, i - 1);
+			printf("sf ra drna lfree\n"); ///7ydni
 			return (NULL);
 		}
+		printf("lklma %d naaadya\n", i); ////7ydni
+		printf("%s\n", split[i]); ///7ydni
+		//break;  ///7ydni
 		while (s[i] != c && s[i] != '\0')
 			i++;
+		j++;
+		printf("%s\n", s + i); ///7ydni
+		break; /// 7ydni
 	}
 	return(split);
 }
