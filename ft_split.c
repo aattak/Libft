@@ -6,11 +6,15 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:28:23 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/22 12:27:57 by aattak           ###   ########.fr       */
+/*   Updated: 2023/11/22 13:58:50 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/////////////////////////
+#include <stdio.h> //////7ydni
+/////////////////////////
 
 static int	ft_count_words(char const *s, char c)
 {
@@ -39,6 +43,9 @@ static int	word_len(char const *s, char c)
 	i = 0;
 	while (s[i] != c && s[i] != '\0')
 		i++;
+	/////////////////////////
+	printf("hada word_len %d\n", i);
+	/////////////////////////
 	return (i);
 }
 
@@ -65,7 +72,7 @@ static void	ft_free(char **split, int i)
 		free(split[i--]);
 	free(split);
 }
-#include <stdio.h> /////7ydni
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -74,32 +81,45 @@ char	**ft_split(char const *s, char c)
 	char	**split;
 
 	n_words = ft_count_words(s, c);
+	///////////////////
 	printf("%d words\n",n_words); ////7ydni
+	//////////////////
 	split = (char **)malloc((n_words + 1) * sizeof(char *));
 	printf("malloc\n");
 	if (split == NULL)
 		return (NULL);
+	/////////////////
 	printf("wa tmallocit binaja7\n"); ////7ydni
+	////////////////
 	i = 0;
 	j = 0;
 	while (s[i] != '\0')
 	{
 		split[j] = malloc_nd_fill(s, c, &i);
-		if (split[i] == NULL)
+		if (split[j] == NULL)
 		{
+			//////////////////////
 			printf("lmalloc 7bess f lklma %d\n", i); ///7ydni
-			ft_free(split, i - 1);
+			/////////////////////
+			ft_free(split, j - 1);
+			////////////////////
 			printf("sf ra drna lfree\n"); ///7ydni
+			///////////////////
 			return (NULL);
 		}
-		printf("lklma %d naaadya\n", i); ////7ydni
-		printf("%s\n", split[i]); ///7ydni
+		///////////////////////
+		printf("lklma %d naaadya\n", j); ////7ydni
+		printf("%s\n", split[j]); ///7ydni
 		//break;  ///7ydni
+		////////////////////////
 		while (s[i] != c && s[i] != '\0')
 			i++;
 		j++;
+		//////////////////
 		printf("%s\n", s + i); ///7ydni
-		break; /// 7ydni
+		//break; /// 7ydni
+		//////////////////
 	}
+	split[n_words] = NULL;
 	return(split);
 }
