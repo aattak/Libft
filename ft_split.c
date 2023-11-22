@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:28:23 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/22 07:00:19 by aattak           ###   ########.fr       */
+/*   Updated: 2023/11/22 09:21:31 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,41 @@
 static int	ft_count_words(char const *s, char c)
 {
 	int	i;
-	int	l;
+	int	count;
 
-	i = 0;
-	if (s[i] == '\0')
+	if (s[0] == '\0')
 		return (0);
-	l = 0;
-	if (s[i] != c)
-		l++;
-	i++;
+	count = 0;
+	if (s[0] != c)
+		count = 1;
+	i = 1;
 	while (s[i] != '\0')
 	{
+		if (s[i - 1] == c && s[i] != c)
+			count++;
+		i++;
 	}
-	return (l);
+	return (count);
 }
 
-static int	word_len()
+static int	word_len(char const *s, char c)
 {
 }
 
-static char	*malloc_nd_fill(char *s)
+static char	*malloc_nd_fill(char const *s)
 {
+	int		i;
+	int		len;
 	char	*split;
+
+	i = 0;
+	while (s[i] == c && s[i] != '\0')
+		i++;
+	len = word_len(&s[i]);
+	split = (char *)malloc(len + 1);
+	if (split == NULL)
+		return (NULL);
+	strlcpy(split, &s[i], len + 1);
 	return (split);
 }
 
@@ -56,11 +69,16 @@ char	**ft_split(char const *s, char c)
 	split = (char **)malloc((n_words + 1) * sizeof(char *));
 	if (split == NULL)
 		return (NULL);
-	while (i < n_words)
+	while (s[i] != '\0')
 	{
-		split[i] = malloc_nd_fill();
+		split[i] = malloc_nd_fill(&s[i]);
 		if (split[i] == NULL)
+		{
 			ft_free(split, i - 1);
+			return (NULL);
+		}
+		while (s[i] != c && s[i] != '\0')
+			i++;
 	}
 	return(split);
 }
