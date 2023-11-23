@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+static size_t	ft_count_words(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	if (s[0] == '\0')
 		return (0);
@@ -32,9 +32,9 @@ static int	ft_count_words(char const *s, char c)
 	return (count);
 }
 
-static int	word_len(char const *s, char c)
+static size_t	word_len(char const *s, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != c && s[i] != '\0')
@@ -42,9 +42,9 @@ static int	word_len(char const *s, char c)
 	return (i);
 }
 
-static char	*malloc_nd_fill(char const *s, char c, int *i)
+static char	*malloc_nd_fill(char const *s, char c, size_t *i)
 {
-	int		len;
+	size_t	len;
 	char	*split;
 
 	while (s[*i] == c && s[*i] != '\0')
@@ -59,11 +59,13 @@ static char	*malloc_nd_fill(char const *s, char c, int *i)
 	return (split);
 }
 
-static void	ft_free(char **split, int i)
+static void	ft_free(char **split, size_t i)
 {
 	while (i >= 0)
 	{
 		free(split[i]);
+		if (i == 0)
+			break;
 		i--;
 	}
 	free(split);
@@ -71,9 +73,9 @@ static void	ft_free(char **split, int i)
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		n_words;
+	size_t	i;
+	size_t	j;
+	size_t	n_words;
 	char	**split;
 
 	if (s == NULL)
@@ -87,7 +89,7 @@ char	**ft_split(char const *s, char c)
 	while (s[i] != '\0')
 	{
 		split[j] = malloc_nd_fill(s, c, &i);
-		if (split[j] == NULL)
+		if (split[j] == NULL && j != 0)
 		{
 			ft_free(split, j - 1);
 			return (NULL);
