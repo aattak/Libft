@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:28:23 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/22 20:32:20 by aattak           ###   ########.fr       */
+/*   Updated: 2023/11/30 11:10:17 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,14 @@ static char	*malloc_nd_fill(char const *s, char c, size_t *i)
 
 static void	ft_free(char **split, size_t i)
 {
+	if (i == 0)
+		return ;
+	i--;
 	while (i >= 0)
 	{
 		free(split[i]);
 		if (i == 0)
-			break;
+			break ;
 		i--;
 	}
 	free(split);
@@ -89,9 +92,9 @@ char	**ft_split(char const *s, char c)
 	while (s[i] != '\0')
 	{
 		split[j] = malloc_nd_fill(s, c, &i);
-		if (split[j] == NULL && j != 0)
+		if (split[j] == NULL)
 		{
-			ft_free(split, j - 1);
+			ft_free(split, j);
 			return (NULL);
 		}
 		j++;
