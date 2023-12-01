@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:48:12 by aattak            #+#    #+#             */
-/*   Updated: 2023/12/01 12:27:18 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/01 14:53:04 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (!lst)
+		return (lst);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
