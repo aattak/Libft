@@ -6,18 +6,20 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:51:26 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/03 14:41:03 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:50:14 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	h;
 
 	i = 0;
-	while (s[i] != '\0' && s[i] != c)
+	h = (char)c;
+	while (s[i] != '\0' && s[i] != h)
 		i++;
-	if (s[i] == c)
-		return (s + i);
+	if (s[i] == h)
+		return ((char *)s + i);
 	return (NULL);
 }

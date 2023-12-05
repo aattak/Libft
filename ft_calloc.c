@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 16:09:37 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/14 14:17:48 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/05 15:55:29 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	i;
 
 	i = 0;
+	if (count && size && (count > SIZE_MAX / size))
+		return (NULL);
 	ptr = malloc(count * size);
 	if (ptr == NULL)
 		return (NULL);

@@ -6,13 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:49:00 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/06 17:52:04 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:52:10 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
-#include <errno.h>
 
 char	*ft_strdup(const char *s1)
 {
@@ -21,10 +19,7 @@ char	*ft_strdup(const char *s1)
 
 	ptr = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (ptr == NULL)
-	{
-		errno = ENOMEM;
 		return (NULL);
-	}
 	i = 0;
 	while (s1[i] != '\0')
 	{

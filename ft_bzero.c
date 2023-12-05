@@ -6,11 +6,11 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:51:25 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/13 19:44:13 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:53:17 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
