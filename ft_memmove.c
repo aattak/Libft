@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:19:26 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/18 11:16:25 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/07 20:19:29 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = len;
 	while (i > 0)
 	{
-		dst[i] = src[i];
+		((char *)dst)[i] = ((char *)src)[i];
 		i--;
 	}
 	return (dst);
