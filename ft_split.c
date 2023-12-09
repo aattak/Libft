@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:28:23 by aattak            #+#    #+#             */
-/*   Updated: 2023/11/30 11:10:17 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/09 15:18:59 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s[i] != '\0')
+	while (j < n_words)
 	{
 		split[j] = malloc_nd_fill(s, c, &i);
 		if (split[j] == NULL)
