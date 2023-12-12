@@ -6,18 +6,19 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:36:24 by aattak            #+#    #+#             */
-/*   Updated: 2023/12/08 17:02:15 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/12 21:54:35 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h> //////////////////////
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len;
 	char	*joined;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	joined = (char *)malloc(len);
 	if (joined == NULL)
