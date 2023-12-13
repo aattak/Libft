@@ -6,7 +6,7 @@
 /*   By: aattak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 08:49:11 by aattak            #+#    #+#             */
-/*   Updated: 2023/12/12 22:07:45 by aattak           ###   ########.fr       */
+/*   Updated: 2023/12/13 09:57:24 by aattak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*trimmed;
 
-	if (!s || !set)
+	if (!s1 || !set)
 		return (NULL);
 	slen = ft_strlen(s1);
 	start = 0;
