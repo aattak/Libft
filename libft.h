@@ -15,7 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdint.h>
+
+# define NULL_P ((void *)0)
 
 typedef struct s_list
 {

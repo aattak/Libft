@@ -25,5 +25,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		i++;
 	if (str[i] == h && i < n)
 		return ((void *)str + i);
-	return (NULL);
+	return (NULL_P);
 }

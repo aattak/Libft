@@ -17,13 +17,13 @@ static size_t	ft_count_words(char const *s, char c)
 	size_t	i;
 	size_t	count;
 
-	if (s[0] == '\0')
+	if (!(s[0]))
 		return (0);
 	count = 0;
 	if (s[0] != c)
 		count = 1;
 	i = 1;
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i - 1] == c && s[i] != c)
 			count++;
@@ -51,8 +51,8 @@ static char	*malloc_nd_fill(char const *s, char c, size_t *i)
 		(*i)++;
 	len = word_len(&s[*i], c);
 	split = (char *)malloc(len + 1);
-	if (split == NULL)
-		return (NULL);
+	if (!split)
+		return (NULL_P);
 	ft_strlcpy(split, &s[*i], len + 1);
 	while (s[*i] != c && s[*i] != '\0')
 		(*i)++;
@@ -81,24 +81,24 @@ char	**ft_split(char const *s, char c)
 	size_t	n_words;
 	char	**split;
 
-	if (s == NULL)
-		return (NULL);
+	if (!s)
+		return (NULL_P);
 	n_words = ft_count_words(s, c);
 	split = (char **)malloc((n_words + 1) * sizeof(char *));
-	if (split == NULL)
-		return (NULL);
+	if (!split)
+		return (NULL_P);
 	i = 0;
 	j = 0;
 	while (j < n_words)
 	{
 		split[j] = malloc_nd_fill(s, c, &i);
-		if (split[j] == NULL)
+		if (!(split[j]))
 		{
 			ft_free(split, j);
-			return (NULL);
+			return (NULL_P);
 		}
 		j++;
 	}
-	split[n_words] = NULL;
+	split[n_words] = NULL_P;
 	return (split);
 }

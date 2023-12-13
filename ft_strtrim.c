@@ -17,7 +17,7 @@ static char	in_set(char c, char const *set)
 	size_t	i;
 
 	i = 0;
-	while (set[i] != '\0')
+	while (set[i])
 	{
 		if (c == set[i])
 			return (1);
@@ -34,10 +34,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trimmed;
 
 	if (!s1 || !set)
-		return (NULL);
+		return (NULL_P);
 	slen = ft_strlen(s1);
 	start = 0;
-	while (in_set(s1[start], set) && s1[start] != '\0')
+	while (in_set(s1[start], set) && s1[start])
 		start++;
 	if (s1[start] == '\0')
 		return (ft_strdup(""));
@@ -45,8 +45,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (in_set(s1[end], set))
 		end--;
 	trimmed = (char *)malloc(end - start + 2);
-	if (trimmed == NULL)
-		return (NULL);
+	if (!trimmed)
+		return (NULL_P);
 	ft_strlcpy(trimmed, &s1[start], end - start + 2);
 	return (trimmed);
 }

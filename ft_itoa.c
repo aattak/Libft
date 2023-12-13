@@ -52,8 +52,8 @@ char	*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	len = ilen(n);
 	str = (char *)malloc(len + 1);
-	if (str == NULL)
-		return (NULL);
+	if (!str)
+		return ((void *)0);
 	str[len] = '\0';
 	len--;
 	if (n < 0)
